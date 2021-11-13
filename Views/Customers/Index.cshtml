@@ -25,7 +25,7 @@ else
         {
             <tr>
                 <td>@Html.DisplayFor(modelItem => customer.Name)</td>
-                <td>@customer.MembershipType.DiscountRate</td>
+                <td>@customer.MembershipType.Name</td>
                 <td><a asp-action="Details" asp-route-id="@customer.Id">Details</a></td>
             </tr>
         }
