@@ -41,14 +41,5 @@ namespace LibApp.Controllers
 
             return View(customer);
         }
-        
-        private IEnumerable<Customer> GetCustomers()
-        {
-            return new List<Customer>
-            {
-                new Customer { Id = 1, Name = "Jan Kowalski" },
-                new Customer { Id = 2, Name = "Monika Nowak" }
-            };
-        }
     }
 }
