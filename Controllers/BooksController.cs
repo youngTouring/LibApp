@@ -56,11 +56,70 @@ namespace LibApp.Controllers
             return View(viewModel);
         }
 
-        public IActionResult Edit(int bookId)
+        //  Book/Edit
+        public async Task<IActionResult> Edit(int id)
         {
-            return Content("id=" + bookId);
+
+            var book = await _context.Books.FindAsync(id);
+            if (book == null)
+            {
+                return NotFound();
+            }
+            return View(book);
         }
 
+        // POST: Books/Edit
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,AuthorName,Genre,GenreId,DateAdded," +
+            "ReleaseDate,NumberInStock")] Book book)
+        {
+            if (id != book.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(book);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                   throw;
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(book);
+        }
+
+        // Books/Delete
+        public async Task<IActionResult> Delete(int id)
+        {
+            var book = await _context.Books
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (book == null)
+            {
+                return NotFound();
+            }
+
+            return View(book);
+        }
+
+        // POST: Movies/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var movie = await _context.Books.FindAsync(id);
+            _context.Books.Remove(movie);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
 
 
         [Route("books/released/{year:regex(^\\d{{4}}$)}/{month:range(1, 12)}")]
