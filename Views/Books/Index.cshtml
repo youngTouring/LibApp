@@ -11,19 +11,22 @@
     <thead>
         <tr>
             <th>Book</th>
-            <th colspan="2">Genre</th>
+            <th colspan="1">Genre</th>
+            <th colspan="1">Actions</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var book in Model)
         {
-        <tr>
-            <td>@Html.DisplayFor(modelItem => book.Name)</td>
-            <td>@Html.DisplayFor(modelItem => book.Genre.Name)</td>
-            <td><a asp-action="Details" asp-route-id="@book.Id">Details</a></td>
-            <td><a asp-action="Edit" asp-route-id="@book.Id">Edit</a></td>
-            <td><a asp-action="Delete" asp-route-id="@book.Id">Delete</a></td>
-        </tr>
+            <tr>
+                <td>@Html.DisplayFor(modelItem => book.Name)</td>
+                <td>@Html.DisplayFor(modelItem => book.Genre.Name)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@book.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@book.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@book.Id">Delete</a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
