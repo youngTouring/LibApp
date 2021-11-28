@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bykdxMLKCt7PBXX4oYv3MWDfrTgEtvOk1zYsW5tBfsKu4dZsL6KMvbKw/fdkNpAdjzcnnBxwFVZU6wvoE71S8g==",
+  "dgSpecHash": "alVYPXzWCONQU9qP4s8YUcjW30rbeyjFeF7fLYmAyFPRv6O/tT9lJcW8rfWUVwBqTKwDPOhPNo6QZ9zARvUDqw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\miko5\\source\\repos\\LibApp\\LibApp.csproj",
+  "projectFilePath": "C:\\Users\\miko5\\Desktop\\WSEI_2021_2022\\asp.net\\LibApp\\LibApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\miko5\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\miko5\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.9\\microsoft.aspnetcore.cryptography.internal.5.0.9.nupkg.sha512",

@@ -6725,11 +6725,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\miko5\\Source\\Repos\\LibApp\\LibApp.csproj",
+      "projectUniqueName": "C:\\Users\\miko5\\Desktop\\WSEI_2021_2022\\asp.net\\LibApp\\LibApp.csproj",
       "projectName": "LibApp",
-      "projectPath": "C:\\Users\\miko5\\Source\\Repos\\LibApp\\LibApp.csproj",
+      "projectPath": "C:\\Users\\miko5\\Desktop\\WSEI_2021_2022\\asp.net\\LibApp\\LibApp.csproj",
       "packagesPath": "C:\\Users\\miko5\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\miko5\\Source\\Repos\\LibApp\\obj\\",
+      "outputPath": "C:\\Users\\miko5\\Desktop\\WSEI_2021_2022\\asp.net\\LibApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\miko5\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\miko5\\source\\repos\\LibApp\\LibApp.csproj": {}
+    "C:\\Users\\miko5\\Desktop\\WSEI_2021_2022\\asp.net\\LibApp\\LibApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\miko5\\source\\repos\\LibApp\\LibApp.csproj": {
+    "C:\\Users\\miko5\\Desktop\\WSEI_2021_2022\\asp.net\\LibApp\\LibApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\miko5\\source\\repos\\LibApp\\LibApp.csproj",
+        "projectUniqueName": "C:\\Users\\miko5\\Desktop\\WSEI_2021_2022\\asp.net\\LibApp\\LibApp.csproj",
         "projectName": "LibApp",
-        "projectPath": "C:\\Users\\miko5\\source\\repos\\LibApp\\LibApp.csproj",
+        "projectPath": "C:\\Users\\miko5\\Desktop\\WSEI_2021_2022\\asp.net\\LibApp\\LibApp.csproj",
         "packagesPath": "C:\\Users\\miko5\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\miko5\\source\\repos\\LibApp\\obj\\",
+        "outputPath": "C:\\Users\\miko5\\Desktop\\WSEI_2021_2022\\asp.net\\LibApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\miko5\\AppData\\Roaming\\NuGet\\NuGet.Config",
