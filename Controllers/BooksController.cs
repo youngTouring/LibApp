@@ -37,64 +37,31 @@ namespace LibApp.Controllers
             return View(book);
         }
 
-        public IActionResult Random()
+        public IActionResult Edit(int id)
         {
-            var firstBook = new Book() { Name = "English dictionary" };
-
-            var customers = new List<Customer>
-            {
-                new Customer {Name = "Customer 1"},
-                new Customer {Name = "Customer 2"}
-            };
-
-            var viewModel = new RandomBookViewModel
-            {
-                Book = firstBook,
-                Customers = customers
-            };
-
-            return View(viewModel);
-        }
-
-        //  Book/Edit
-        public async Task<IActionResult> Edit(int id)
-        {
-
-            var book = await _context.Books.FindAsync(id);
-            if (book == null)
-            {
-                return NotFound();
-            }
-            return View(book);
-        }
-
-        // POST: Books/Edit
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,AuthorName,Genre,GenreId,DateAdded," +
-            "ReleaseDate,NumberInStock")] Book book)
-        {
-            if (id != book.Id)
+            var book = _context.Books.SingleOrDefault(b => b.Id == id);
+            if(book == null)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            var viewModel = new BookFormViewModel
             {
-                try
-                {
-                    _context.Update(book);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                   throw;
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(book);
+                Book = book,
+                Genres = _context.Genre.ToList()
+            };
+
+            return View("BookForm", viewModel);
+        }
+
+        public IActionResult New()
+        {
+            var viewModel = new BookFormViewModel
+            {
+                Genres = _context.Genre.ToList()
+            };
+
+            return View("BookForm", viewModel);
         }
 
         // Books/Delete
@@ -110,7 +77,39 @@ namespace LibApp.Controllers
             return View(book);
         }
 
-        // POST: Movies/Delete/5
+        [HttpPost]
+        public IActionResult Save(Book book)
+        {
+            if (book.Id == 0)
+            {
+                book.DateAdded = DateTime.Now;
+                _context.Books.Add(book);
+            }
+            else
+            {
+                var bookIndDb = _context.Books.Single(b => b.Id == book.Id);
+                bookIndDb.Name = book.Name;
+                bookIndDb.AuthorName = book.AuthorName;
+                bookIndDb.GenreId = book.GenreId;
+                bookIndDb.ReleaseDate= book.ReleaseDate;
+                bookIndDb.DateAdded= book.DateAdded;
+                bookIndDb.NumberInStock= book.NumberInStock;
+
+            }
+            try
+            {
+                _context.SaveChanges();
+
+            }
+            catch(DbUpdateException e)
+            {
+                Console.WriteLine(e);
+            }
+
+            return RedirectToAction("Index", "Books");
+        }
+
+        // POST: Books/Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -126,15 +125,6 @@ namespace LibApp.Controllers
         public IActionResult ByReleaseDate(int year, int month)
         {
             return Content(year + "/" + month);
-        }
-
-        private IEnumerable<Book> GetBooks()
-        {
-            return new List<Book>
-            {
-                new Book {Id = 1, Name = "Hamlet"},
-                new Book {Id = 2, Name = "Ulysses"}
-            };
         }
     }
 }

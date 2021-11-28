@@ -84,7 +84,15 @@ namespace LibApp.Controllers
                 customerIndDb.MembershipTypeId = customer.MembershipTypeId;
                 customerIndDb.HasNewsletterSubscribed = customer.HasNewsletterSubscribed;
             }
-            _context.SaveChanges();
+            try
+            {
+                _context.SaveChanges();
+
+            }
+            catch (DbUpdateException e)
+            {
+                Console.WriteLine(e);
+            }
 
             return RedirectToAction("Index", "Customers");
         }
