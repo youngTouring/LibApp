@@ -4,6 +4,7 @@ using LibApp.Data;
 using LibApp.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using LibApp.Models;
+using System;
 
 namespace LibApp.Controllers
 {
@@ -84,7 +85,14 @@ namespace LibApp.Controllers
                 customerInDb.HasNewsletterSubscribed = customer.HasNewsletterSubscribed;
             }
 
-            _context.SaveChanges();
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbUpdateException e)
+            {
+                Console.WriteLine(e);
+            }
 
             return RedirectToAction("Index", "Customers");
 
