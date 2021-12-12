@@ -67,16 +67,16 @@ namespace LibApp.Controllers.Api
         [HttpPut("{id}")]
         public void UpdateCustomer(int id, Customer customer)
         {
-            var customerIndDb = _context.Customers.SingleOrDefault(c => c.Id == id);
-            if (customer == null)
+            var customerInDb = _context.Customers.SingleOrDefault(c => c.Id == id);
+            if (customerInDb == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
 
-            customerIndDb.Name = customer.Name;
-            customerIndDb.Birthdate = customer.Birthdate;
-            customerIndDb.MembershipTypeId = customer.MembershipTypeId;
-            customerIndDb.HasNewsletterSubscribed = customer.HasNewsletterSubscribed;
+            customerInDb.Name = customer.Name;
+            customerInDb.Birthdate = customer.Birthdate;
+            customerInDb.MembershipTypeId = customer.MembershipTypeId;
+            customerInDb.HasNewsletterSubscribed = customer.HasNewsletterSubscribed;
 
             _context.SaveChanges();
         }
