@@ -45,16 +45,30 @@ else
     <script>
         $(document).ready(function () {
             $("#customers .js-delete").on("click", function () {
-                if (confirm("Confirm customer deletion?")) {
-                    var button = $(this);
-                    $.ajax({
-                        url: "api/customers/" + button.attr("data-customer-id"),
-                        method: "DELETE",
-                        success: function () {
-                            button.parents("tr").remove();
+                var button = $(this);
+                bootbox.confirm({
+                    title: "Delete user",
+                    message: "Confirm customer deletion?",
+                    buttons: {
+                        cancel: {
+                            label: '<i class="fa fa-times"></i> Cancel'
+                        },
+                        confirm: {
+                            label: '<i class="fa fa-check"></i> Confirm'
                         }
-                    });
-                }
+                    },
+                    callback: function (result) {
+                        if (result) {
+                            $.ajax({
+                                url: "api/customers/" + button.attr("data-customer-id"),
+                                method: "DELETE",
+                                success: function () {
+                                    button.parents("tr").remove();
+                                }
+                            });
+                        }
+                    }
+                });
             });
         });
     </script>
