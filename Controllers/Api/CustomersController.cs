@@ -21,6 +21,7 @@ namespace LibApp.Controllers.Api
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CustomersController : ControllerBase
     {
         public CustomersController(ApplicationDbContext context, IMapper mapper)
