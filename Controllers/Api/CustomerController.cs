@@ -38,7 +38,7 @@ namespace LibApp.Controllers.Api
         }
 
         // GET /api/customers/{id}
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetCustomer")]
         public CustomerDto GetCustomer(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
@@ -53,11 +53,11 @@ namespace LibApp.Controllers.Api
         // POST /api/customers
 
         [HttpPost]
-        public CustomerDto CreateCustomer(CustomerDto customerDto)
+        public IActionResult CreateCustomer(CustomerDto customerDto)
         {
             if (!ModelState.IsValid)
             {
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
             }
 
             var customer = _mapper.Map<Customer>(customerDto);
@@ -66,7 +66,8 @@ namespace LibApp.Controllers.Api
             _context.SaveChanges();
 
             customerDto.Id = customer.Id;
-            return customerDto;
+            //Zwraca status 201 (utworzone u Ÿród³a) zamiast 200
+            return CreatedAtRoute(nameof(GetCustomer), new { id = customerDto.Id }, customerDto);
         }
 
         // PUT /api/customers/{id}
