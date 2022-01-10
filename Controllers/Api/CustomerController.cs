@@ -20,6 +20,7 @@ namespace LibApp.Controllers.Api
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[Produces("application/json")] - zwracany output, mo¿na ustawiæ XML na przyk³ad 
 
     public class CustomersController : ControllerBase
     {

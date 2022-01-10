@@ -35,11 +35,7 @@ namespace LibApp
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddControllersWithViews(options =>
-            {
-                options.OutputFormatters.RemoveType(typeof(SystemTextJsonOutputFormatter));
-                options.ReturnHttpNotAcceptable = true;
-            }).AddXmlSerializerFormatters();
+            services.AddControllersWithViews();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
 
