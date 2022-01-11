@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "raNFS5MUOhtwiXS7iTD0ZcoSQJpQZdELd9h+cCqW7sefITgTCJ9hxYN719xpF8QUAYQGZhMW8bhVVRMIfb4Eig==",
+  "dgSpecHash": "KyMj5wacEmCpAFE3mJUFiF4RqlOPAztVoCV/bzcOOwn+xW+bk+U2HnBQ81MjRKNKyi1OFn1bNJrirc7A6s4hkw==",
   "success": true,
   "projectFilePath": "C:\\Users\\miko5\\Desktop\\WSEI_2021_2022\\asp.net\\LibApp\\LibApp.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\miko5\\.nuget\\packages\\bootbox.js\\5.5.2\\bootbox.js.5.5.2.nupkg.sha512",
     "C:\\Users\\miko5\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\miko5\\.nuget\\packages\\jquery\\1.12.4\\jquery.1.12.4.nupkg.sha512",
+    "C:\\Users\\miko5\\.nuget\\packages\\jquery.datatables\\1.10.15\\jquery.datatables.1.10.15.nupkg.sha512",
     "C:\\Users\\miko5\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.7\\microsoft.aspnet.webapi.client.5.2.7.nupkg.sha512",
     "C:\\Users\\miko5\\.nuget\\packages\\microsoft.aspnet.webapi.core\\5.2.7\\microsoft.aspnet.webapi.core.5.2.7.nupkg.sha512",
     "C:\\Users\\miko5\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.9\\microsoft.aspnetcore.cryptography.internal.5.0.9.nupkg.sha512",
