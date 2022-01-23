@@ -37,7 +37,7 @@ namespace LibApp.Controllers.Api
             var customers = _context.Customers
                                 .Include(c => c.MembershipType)
                                 .ToList()
-                                .Select(_mapper.Map<Customer, CustomerDto>);
+                                .Select(_mapper.Map<Customer, BookDto>);
 
             return Ok(customers);
         }
@@ -57,12 +57,12 @@ namespace LibApp.Controllers.Api
             
             Console.WriteLine("END");
 
-            return Ok(_mapper.Map<CustomerDto>(customer));
+            return Ok(_mapper.Map<BookDto>(customer));
         }
 
         // POST /api/customers
         [HttpPost]
-        public IActionResult CreateCustomer(CustomerDto customerDto)
+        public IActionResult CreateCustomer(BookDto customerDto)
         {
             if (!ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace LibApp.Controllers.Api
 
         // PUT /api/customers/{id}
         [HttpPut("{id}")]
-        public void UpdateCustomer(int id, CustomerDto customerDto)
+        public void UpdateCustomer(int id, BookDto customerDto)
         {
             var customerInDb = _context.Customers.SingleOrDefault(c => c.Id == id);
             if (customerInDb == null)
