@@ -12,8 +12,8 @@ namespace LibApp.Profiles
     {
         public CustomerProfile()
         {
-            CreateMap<Customer, BookDto>();
-            CreateMap<BookDto, Customer>();
+            CreateMap<Customer, CustomerDto>();
+            CreateMap<CustomerDto, Customer>();
         }
     }
 }

@@ -32,14 +32,20 @@ namespace LibApp.Controllers.Api
 
         // GET /api/customers
         [HttpGet]
-        public IActionResult GetCustomers()
+        public IActionResult GetCustomers(string query = null)
         {
-            var customers = _context.Customers
+            IEnumerable<Customer> customerQuery = _context.Customers
                                 .Include(c => c.MembershipType)
-                                .ToList()
-                                .Select(_mapper.Map<Customer, BookDto>);
+                                .ToList();
 
-            return Ok(customers);
+            if (!String.IsNullOrWhiteSpace(query))
+            {
+                customerQuery = customerQuery.Where(c => c.Name.Contains(query));
+            }
+
+            var customerDtos = customerQuery.Select(_mapper.Map<Customer, CustomerDto>);
+
+            return Ok(customerDtos);
         }
 
         // GET /api/customers/{id}
@@ -57,12 +63,12 @@ namespace LibApp.Controllers.Api
             
             Console.WriteLine("END");
 
-            return Ok(_mapper.Map<BookDto>(customer));
+            return Ok(_mapper.Map<CustomerDto>(customer));
         }
 
         // POST /api/customers
         [HttpPost]
-        public IActionResult CreateCustomer(BookDto customerDto)
+        public IActionResult CreateCustomer(CustomerDto customerDto)
         {
             if (!ModelState.IsValid)
             {
@@ -79,7 +85,7 @@ namespace LibApp.Controllers.Api
 
         // PUT /api/customers/{id}
         [HttpPut("{id}")]
-        public void UpdateCustomer(int id, BookDto customerDto)
+        public void UpdateCustomer(int id, CustomerDto customerDto)
         {
             var customerInDb = _context.Customers.SingleOrDefault(c => c.Id == id);
             if (customerInDb == null)
