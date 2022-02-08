@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace LibApp.Repositories
 {
@@ -19,7 +20,7 @@ namespace LibApp.Repositories
 
         public IEnumerable<Book> GetBooks()
         {
-            return _context.Books;
+            return _context.Books.Include(b => b.Genre);
         }
         Book GetBookById(int id)
         {
