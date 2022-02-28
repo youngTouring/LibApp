@@ -2,6 +2,8 @@
     ViewBag.Title = "Customers";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityUser> UserManager
 
 <h2>Customers</h2>
 
@@ -11,18 +13,17 @@
 
 <table id="customers" class="table table-hover">
     <thead>
-    <tr>
-        <th>Customer</th>
-        <th>Discount Rate</th>
-        <th>Delete</th>
-    </tr>
+        <tr>
+            <th>Customer</th>
+            <th>Discount Rate</th>
+            <th>Actions</th>
+        </tr>
     </thead>
     <tbody>
-       
     </tbody>
 </table>
 
-@section Scripts 
+@section Scripts
 {
     <script>
         $(document).ready(function () {
@@ -44,7 +45,16 @@
                     {
                         data: "id",
                         render: function (data) {
-                            return "<button class='btn btn-secondary js-delete' data-customer-id=" + data + ">Delete</button>";
+                            let delete = "<button class='btn btn-secondary js-delete' data-customer-id=" + data + ">Delete</button>"
+                            let details = "<a href='customers/details/" + data + "'/>"
+                            @if(User.IsInRole("Administrator"))
+                             {
+                                <text>return delete + details</text>;
+                             }
+                             else
+                             {
+                                <text>return details</text>;
+                             }
                         }
                     }
                 ]

@@ -17,35 +17,15 @@ namespace LibApp.Repositories
         {
             _context = context;
         }
-
         public IEnumerable<Book> GetBooks()
         {
             return _context.Books.Include(b => b.Genre);
         }
-        Book GetBookById(int id)
-        {
-            return _context.Books.Find(id);
-        }
 
-        void AddBook (Book book)
-        {
-            _context.Books.Add(book);
-        }
-
-        void DeleteBook(int id)
-        {
-            _context.Books.Remove(GetBookById(id));
-        }
-
-        void UpdateBook(Book book)
-        {
-            _context.Books.Update(book);
-        }
-
-        void Save()
-        {
-            _context.SaveChanges();
-        }
-
+        public Book GetBookById(int id) => _context.Books.Find(id);
+        public void AddBook(Book book) => _context.Books.Add(book);
+        public void DeleteBook(int id) => _context.Books.Remove(GetBookById(id));
+        public void UpdateBook(Book book) => _context.Books.Update(book);
+        public void Save() => _context.SaveChanges();
     }
 }

@@ -15,11 +15,13 @@ namespace LibApp.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IBookRepository _bookRepository;
+        private readonly IGenreRepository _genreRepository;
 
-        public BooksController(ApplicationDbContext context, IBookRepository bookRepository)
+        public BooksController(ApplicationDbContext context, IBookRepository bookRepository, IGenreRepository genreRepository)
         {
             _context = context;
             _bookRepository = bookRepository;
+            _genreRepository = genreRepository;
         }
 
         public IActionResult Index()
@@ -40,7 +42,7 @@ namespace LibApp.Controllers
 
         public IActionResult Edit(int id)
         {
-            var book = _context.Books.SingleOrDefault(b => b.Id == id);
+            var book = _bookRepository.GetBookById(id);
             if (book == null)
             {
                 return NotFound();
@@ -102,7 +104,7 @@ namespace LibApp.Controllers
         {
             return _bookRepository.GetBooks().ToList();
         }
-        //other ethods to be implemented
+        //other methods to be implemented
 
     }
 }
